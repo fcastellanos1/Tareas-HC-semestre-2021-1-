@@ -1,10 +1,8 @@
-// calcular el sin(x = pi/3), usando la expansion matematica
-// sin(x, N) = \sum_{n=1}^{N} (-1)^{n-1} x^{2n-1}/(2n-1)!
 
 #include <iostream>
 #include <cmath>
 
-double mysin(double x0, int N); // declaration
+double mysin(double x0, int N);
 
 int main()
 {
@@ -13,8 +11,9 @@ int main()
 
     const double x = M_PI/3;
     const double exact = std::sin(x);
-
-    for(int NMAX = 1; NMAX <= 15; NMAX++) { //NMAX pequeño porque la precisión máxima se alcanza muy rápido, y no cambia ni hace overflow para NMAX más grandes.
+    
+//NMAX pequeño porque la precisión máxima se alcanza muy rápido, y no cambia ni hace overflow para NMAX más grandes. 
+    for(int NMAX = 1; NMAX <= 15; NMAX++) {
         double diff = std::fabs(mysin(x, NMAX) - exact)/exact;
         std::cout << NMAX << "\t" << diff << "\n";
     }
@@ -22,7 +21,7 @@ int main()
     return 0;
 }
 
-double mysin(double x0, int N) // implementation
+double mysin(double x0, int N)
 {
   double total_value = x0;
   double moment_value = x0;
